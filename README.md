@@ -6,7 +6,7 @@
   <h3 align="center">Flutter Chatty App</h3>
 
   <p align="center">
-    Chatty App will be an Firebase based chat app. </p>
+    Chatty App will be a Firebase based chat app. </p>
     <a href="https://github.com/yamisagi/yamisagi"><strong>About Me 💙»</strong></a>
     <br />
     <br />
