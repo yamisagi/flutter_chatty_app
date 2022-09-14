@@ -1,4 +1,5 @@
 import 'package:chatty_app/constant/constants.dart';
+import 'package:chatty_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeBottomWidget extends StatelessWidget {
@@ -39,7 +40,13 @@ class WelcomeBottomWidget extends StatelessWidget {
                 padding: Constants.buttonPadding,
                 side: const BorderSide(color: Colors.white),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const RegisterPage(),
+                  ),
+                );
+              },
               child: Text(
                 Constants.registerText,
                 style: Theme.of(context)
