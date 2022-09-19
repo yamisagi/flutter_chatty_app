@@ -1,18 +1,23 @@
+import 'dart:developer';
+
 import 'package:chatty_app/constant/constants.dart';
-import 'package:chatty_app/product/register_page/textfield_widget.dart';
+import 'package:chatty_app/pages/chat_page.dart';
+import 'package:chatty_app/product/common/textfield_widget.dart';
 import 'package:flutter/material.dart';
 
-class RegisterBottomWidget extends StatelessWidget {
-  const RegisterBottomWidget({
+class BottomWidget extends StatelessWidget {
+  const BottomWidget({
     Key? key,
     required TextEditingController emailController,
     required TextEditingController passwordController,
+    required this.buttonText,
   })  : _emailController = emailController,
         _passwordController = passwordController,
         super(key: key);
 
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
+  final String buttonText;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +44,26 @@ class RegisterBottomWidget extends StatelessWidget {
               isPassword: true,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // TODO: Add login function
+
+                // This is just for testing fake login
+                (_emailController.text == 'admin' &&
+                        _passwordController.text == 'admin')
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ChatPage(),
+                        ))
+                    : log('Wrong email or password');
+              },
               style: ElevatedButton.styleFrom(
                 elevation: 0,
                 backgroundColor: Constants.registerBottomColor.withOpacity(0.4),
                 padding: Constants.buttonPadding,
               ),
               child: Text(
-                Constants.registerText,
+                buttonText,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Constants.registerContainerColor,
                     fontWeight: FontWeight.bold),

@@ -1,8 +1,7 @@
 import 'package:chatty_app/constant/constants.dart';
-import 'package:chatty_app/product/register_page/animated_texts.dart';
-import 'package:chatty_app/product/register_page/register_bottom.dart';
+import 'package:chatty_app/product/common/animated_texts.dart';
+import 'package:chatty_app/product/common/bottom_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -40,7 +39,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
             ),
-            RegisterBottomWidget(
+            BottomWidget(
+              buttonText: Constants.registerText,
               emailController: _emailController,
               passwordController: _passwordController,
             )

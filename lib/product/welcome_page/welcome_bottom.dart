@@ -1,4 +1,5 @@
 import 'package:chatty_app/constant/constants.dart';
+import 'package:chatty_app/pages/log_in_page.dart';
 import 'package:chatty_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,13 @@ class WelcomeBottomWidget extends StatelessWidget {
                 padding: Constants.buttonPadding,
                 side: const BorderSide(color: Colors.white),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const LogInPage(),
+                  ),
+                );
+              },
               child: Text(
                 'Log in',
                 style: Theme.of(context)

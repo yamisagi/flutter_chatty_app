@@ -15,6 +15,7 @@ class Constants {
   static const String enterEmail = 'Enter your email';
   static const String enterPassword = 'Enter your password';
   static const String forgotPassword = 'Forgot Password ?';
+  static const String typeMessage = 'Type a message';
   // ---------------RADIUS&PADDING----------------
   static const buttonPadding = EdgeInsets.symmetric(
     horizontal: 20,
