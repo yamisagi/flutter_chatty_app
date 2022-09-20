@@ -16,7 +16,9 @@ class Constants {
   static const String enterPassword = 'Enter your password';
   static const String forgotPassword = 'Forgot Password ?';
   static const String typeMessage = 'Type a message';
+
   // ---------------RADIUS&PADDING----------------
+
   static const buttonPadding = EdgeInsets.symmetric(
     horizontal: 20,
     vertical: 5,
@@ -30,13 +32,17 @@ class Constants {
       EdgeInsets.symmetric(horizontal: 30);
   static const BorderRadius textFieldRadius =
       BorderRadius.all(Radius.circular(12));
+
   // ---------------COLORS----------------
+
   static const Color scaffoldColor = Colors.white;
   static final Color bottomColor = Colors.blueGrey.shade700;
   static final Color registerContainerColor = Colors.blue.shade300;
   static const Color registerBottomColor = Colors.white;
   static const Color textFieldBackground = Colors.black38;
+
   // -----------------STYLES----------------
+  
   static const TextStyle coloredTextStyle = TextStyle(
     fontSize: 70.0,
     fontWeight: FontWeight.bold,

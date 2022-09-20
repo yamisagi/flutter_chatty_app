@@ -46,10 +46,13 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.send),
-                  padding: Constants.buttonPadding,
-                  onPressed: () {},
+                Hero(
+                  tag: 'login',
+                  child: IconButton(
+                    icon: const Icon(Icons.send),
+                    padding: Constants.buttonPadding,
+                    onPressed: () {},
+                  ),
                 )
               ],
             ),

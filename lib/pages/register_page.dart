@@ -40,6 +40,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             BottomWidget(
+              heroTag: 'register',
+              onPressed: () {
+                // We will add the logic here later implementation
+              }, 
               buttonText: Constants.registerText,
               emailController: _emailController,
               passwordController: _passwordController,

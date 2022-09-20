@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:chatty_app/constant/constants.dart';
-import 'package:chatty_app/pages/chat_page.dart';
 import 'package:chatty_app/product/common/textfield_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +8,8 @@ class BottomWidget extends StatelessWidget {
     required TextEditingController emailController,
     required TextEditingController passwordController,
     required this.buttonText,
+    required this.onPressed,
+    required this.heroTag,
   })  : _emailController = emailController,
         _passwordController = passwordController,
         super(key: key);
@@ -18,6 +17,8 @@ class BottomWidget extends StatelessWidget {
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
   final String buttonText;
+  final VoidCallback onPressed;
+  final String heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -44,33 +45,27 @@ class BottomWidget extends StatelessWidget {
               isPassword: true,
             ),
             ElevatedButton(
-              onPressed: () {
-                // TODO: Add login function
-
-                // This is just for testing fake login
-                (_emailController.text == 'admin' &&
-                        _passwordController.text == 'admin')
-                    ? Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ChatPage(),
-                        ))
-                    : log('Wrong email or password');
-              },
+              onPressed: onPressed,
               style: ElevatedButton.styleFrom(
                 elevation: 0,
                 backgroundColor: Constants.registerBottomColor.withOpacity(0.4),
                 padding: Constants.buttonPadding,
               ),
-              child: Text(
-                buttonText,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Constants.registerContainerColor,
-                    fontWeight: FontWeight.bold),
+              child: Hero(
+                transitionOnUserGestures: true,
+                tag: heroTag,
+                child: Text(
+                  buttonText,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: Constants.registerContainerColor,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             TextButton(
-              onPressed: (() {}),
+              onPressed: (() {
+                // We will add the functionality of Forgot password later
+              }),
               style: TextButton.styleFrom(
                 enableFeedback: false,
               ),

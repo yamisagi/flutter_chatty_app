@@ -5,7 +5,12 @@ import 'package:chatty_app/pages/welcome_page.dart';
 import 'package:chatty_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MainPage());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    const MainPage(),
+  );
+}
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -14,15 +19,14 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ProductTheme.darkTheme,
-      home: const WelcomePage(),
       debugShowCheckedModeBanner: false,
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (context) => const WelcomePage(),
-      //   '/chat': (context) => const ChatPage(),
-      //   '/register': (context) => const RegisterPage(),
-      //   '/login': (context) => const LogInPage(),
-      // },
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const WelcomePage(),
+        '/chat': (context) => const ChatPage(),
+        '/register': (context) => const RegisterPage(),
+        '/login': (context) => const LogInPage(),
+      },
       title: 'Chatty',
     );
   }

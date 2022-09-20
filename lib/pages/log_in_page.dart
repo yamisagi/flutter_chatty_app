@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chatty_app/constant/constants.dart';
 import 'package:chatty_app/product/common/animated_texts.dart';
 import 'package:chatty_app/product/common/bottom_widget.dart';
@@ -40,6 +42,11 @@ class _LogInPageState extends State<LogInPage> {
               ),
             ),
             BottomWidget(
+              heroTag: 'login',
+              onPressed: () => (_emailController.text == 'admin' &&
+                      _passwordController.text == 'admin')
+                  ? Navigator.pushNamed(context, '/chat')
+                  : log('Wrong email or password'),
               buttonText: Constants.logInText,
               emailController: _emailController,
               passwordController: _passwordController,
