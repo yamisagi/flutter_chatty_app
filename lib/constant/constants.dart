@@ -36,13 +36,14 @@ class Constants {
   // ---------------COLORS----------------
 
   static const Color scaffoldColor = Colors.white;
-  static final Color bottomColor = Colors.blueGrey.shade700;
-  static final Color registerContainerColor = Colors.blue.shade300;
+  static final Color bottomColor = Colors.deepPurple.shade300;
+  static final Color registerContainerColor = Colors.deepPurple.shade300;
   static const Color registerBottomColor = Colors.white;
   static const Color textFieldBackground = Colors.black38;
+  static final Color buttonColor = Colors.deepPurple.shade600;
 
   // -----------------STYLES----------------
-  
+
   static const TextStyle coloredTextStyle = TextStyle(
     fontSize: 70.0,
     fontWeight: FontWeight.bold,

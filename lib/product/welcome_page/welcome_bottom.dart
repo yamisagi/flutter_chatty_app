@@ -25,7 +25,9 @@ class WelcomeBottomWidget extends StatelessWidget {
           children: [
             Text(
               Constants.welcomeText,
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.headline3?.copyWith(
+                    color: Colors.white,
+                  ),
             ),
             Text(
               Constants.welcomeSubText,
@@ -36,6 +38,7 @@ class WelcomeBottomWidget extends StatelessWidget {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                backgroundColor: Constants.buttonColor,
                 padding: Constants.buttonPadding,
                 side: const BorderSide(color: Colors.white),
               ),
@@ -54,6 +57,7 @@ class WelcomeBottomWidget extends StatelessWidget {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                backgroundColor: Constants.buttonColor,
                 padding: Constants.buttonPadding,
                 side: const BorderSide(color: Colors.white),
               ),
