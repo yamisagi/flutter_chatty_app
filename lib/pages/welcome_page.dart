@@ -16,14 +16,26 @@ class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   //
   late AnimationController _controller;
+  late Animation _animation;
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
     );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeIn,
+    );
     _controller.forward();
+    // _animation.addStatusListener((status) {
+    //   // When the animation is completed, we can reverse it
+    //   status == AnimationStatus.completed ? _controller.reverse() : null;
+    //   status == AnimationStatus.dismissed ? _controller.forward() : null;
+    // });
+
     _controller.addListener(() {
       setState(() {});
     });
@@ -39,13 +51,19 @@ class _WelcomePageState extends State<WelcomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants.scaffoldColor.withOpacity(_controller.value),
+      backgroundColor: Constants.scaffoldColor.withOpacity(
+        _animation.value,
+      ), // 300 is the upperBound so we should divide it by 300 to get 1.0 .
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Stack(
-          children: const [
-            WelcomeTopWidget(),
-            WelcomeBottomWidget(),
+          children: [
+            WelcomeTopWidget(
+              // We are passing the height to the WelcomeTopWidget to scale the image
+
+              height: _animation.value * 300,
+            ),
+            const WelcomeBottomWidget(),
           ],
         ),
       ),

@@ -43,7 +43,7 @@ class Constants {
   static final Color buttonColor = Colors.deepPurple.shade600;
 
   // -----------------STYLES----------------
-
+  
   static const TextStyle coloredTextStyle = TextStyle(
     fontSize: 70.0,
     fontWeight: FontWeight.bold,

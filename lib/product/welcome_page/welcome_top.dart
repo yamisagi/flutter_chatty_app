@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 class WelcomeTopWidget extends StatelessWidget {
   const WelcomeTopWidget({
+    required this.height,
     Key? key,
   }) : super(key: key);
 
+  final double height;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -14,7 +16,7 @@ class WelcomeTopWidget extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.5,
+        height: height,
         clipBehavior: Clip.antiAlias,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Constants.radius),
