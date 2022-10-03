@@ -1,4 +1,4 @@
-package com.example.chatty_app
+package com.yamisagi.chatty_app
 
 import io.flutter.embedding.android.FlutterActivity
 

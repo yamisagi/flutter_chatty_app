@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
         appBar: AppBar(
           backgroundColor: Constants.registerContainerColor,
         ),
-        backgroundColor: Constants.scaffoldColor,
+        backgroundColor: Constants.registerContainerColor,
         body: Stack(
           children: [
             Container(

@@ -27,6 +27,8 @@ class Constants {
   static const BorderRadius registerRadius = BorderRadius.only(
     topLeft: Radius.circular(60),
     topRight: Radius.circular(60),
+    bottomLeft: Radius.circular(60),
+    bottomRight: Radius.circular(60),
   );
   static const EdgeInsets textFieldPadding =
       EdgeInsets.symmetric(horizontal: 30);
@@ -43,7 +45,7 @@ class Constants {
   static final Color buttonColor = Colors.deepPurple.shade600;
 
   // -----------------STYLES----------------
-  
+
   static const TextStyle coloredTextStyle = TextStyle(
     fontSize: 70.0,
     fontWeight: FontWeight.bold,
