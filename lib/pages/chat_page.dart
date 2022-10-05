@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:chatty_app/constant/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -9,6 +13,19 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  final _auth = FirebaseAuth.instance;
+  User? loggedInUser;
+  void checkUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

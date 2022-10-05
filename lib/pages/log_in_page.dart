@@ -13,6 +13,8 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
+  final String email = '';
+  final String password = '';
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   @override
@@ -42,6 +44,8 @@ class _LogInPageState extends State<LogInPage> {
               ),
             ),
             BottomWidget(
+              emailChanged: (email) =>null,
+              passwordChanged: (password) => null,
               heroTag: 'login',
               onPressed: () => (_emailController.text == 'admin' &&
                       _passwordController.text == 'admin')

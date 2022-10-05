@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final bool isPassword;
+  final Function(String)? onChanged;
   final TextEditingController controller;
   const TextFieldWidget({
     Key? key,
     required this.hintText,
     required this.isPassword,
     required this.controller,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,9 @@ class TextFieldWidget extends StatelessWidget {
         borderRadius: Constants.textFieldRadius,
       ),
       child: TextField(
+        keyboardType: isPassword
+            ? TextInputType.visiblePassword
+            : TextInputType.emailAddress,
         enableSuggestions: true,
         controller: controller,
         obscureText: isPassword,
@@ -42,6 +47,7 @@ class TextFieldWidget extends StatelessWidget {
           ),
           border: InputBorder.none,
         ),
+        onChanged: onChanged,
       ),
     );
   }

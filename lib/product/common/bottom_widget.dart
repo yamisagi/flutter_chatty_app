@@ -1,3 +1,4 @@
+
 import 'package:chatty_app/constant/constants.dart';
 import 'package:chatty_app/product/common/textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,8 @@ class BottomWidget extends StatelessWidget {
     required TextEditingController passwordController,
     required this.buttonText,
     required this.onPressed,
-    required this.heroTag,
+    required this.heroTag, this.emailChanged, this.passwordChanged,
+
   })  : _emailController = emailController,
         _passwordController = passwordController,
         super(key: key);
@@ -17,8 +19,10 @@ class BottomWidget extends StatelessWidget {
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
   final String buttonText;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
   final String heroTag;
+  final Function(String)? emailChanged;
+  final Function(String)? passwordChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +42,10 @@ class BottomWidget extends StatelessWidget {
               controller: _emailController,
               hintText: Constants.enterEmail,
               isPassword: false,
+              onChanged: emailChanged,
             ),
             TextFieldWidget(
+              onChanged:passwordChanged,
               controller: _passwordController,
               hintText: Constants.enterPassword,
               isPassword: true,
