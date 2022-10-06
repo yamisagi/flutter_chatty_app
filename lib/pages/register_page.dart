@@ -1,11 +1,11 @@
 // ignore_for_file: use_build_context_synchronously, unnecessary_null_comparison
 
-import 'dart:developer';
-
 import 'package:chatty_app/constant/constants.dart';
 import 'package:chatty_app/product/common/animated_texts.dart';
 import 'package:chatty_app/product/common/bottom_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chatty_app/product/common/show_dialog.dart';
+import 'package:chatty_app/services/firebase_exceptions.dart';
+import 'package:chatty_app/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -16,12 +16,27 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _auth = FirebaseAuth.instance;
-
+  final auth = FirebaseAuthProvider();
+  final String _errorMessage = 'Something Bad Happened :/';
   String email = '';
   String password = '';
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,25 +68,41 @@ class _RegisterPageState extends State<RegisterPage> {
               passwordChanged: (password) => this.password = password,
               heroTag: 'register',
               onPressed: () async {
-                // We will add the logic here later implementation
                 try {
-                  final newUser = await _auth.createUserWithEmailAndPassword(
+                  //* We are using FireBaseAuth to create user.
+                  //* And here we are waiting for the Future.
+                  await auth.register(
                     email: email,
                     password: password,
                   );
-                  if (newUser != null) {
-                    Navigator.pushNamed(context, '/chat');
-                  }
-                } on FirebaseAuthException catch (e) {
-                  if (e.code == 'weak-password') {
-                    log('The password provided is too weak.');
-                  } else if (e.code == 'email-already-in-use') {
-                    log('The account already exists for that email.');
-                  } else if (e.code == 'invalid-email') {
-                    log('The email is invalid');
-                  }
-                } on Exception catch (e) {
-                  log(e.toString());
+
+                  Navigator.of(context).pushNamed('/chat');
+                } on EmailAlreadyExistsAuthException {
+                  await fireShowDialog(
+                    context,
+                    title: 'Try New Username',
+                    content: 'Please Try Another Username',
+                  );
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/', (route) => false);
+                } on InvalidEmailAuthException {
+                  await fireShowDialog(
+                    context,
+                    title: 'Invalid Email',
+                    content: 'Please Use Valid Email',
+                  );
+                } on WeakPasswordAuthException {
+                  await fireShowDialog(
+                    context,
+                    title: 'Try New Password',
+                    content: 'Please Try Another Password',
+                  );
+                } on GenericAuthException {
+                  await fireShowDialog(
+                    context,
+                    title: 'Error',
+                    content: _errorMessage,
+                  );
                 }
               },
               buttonText: Constants.registerText,

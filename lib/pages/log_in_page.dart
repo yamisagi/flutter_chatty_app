@@ -1,8 +1,9 @@
-import 'dart:developer';
-
 import 'package:chatty_app/constant/constants.dart';
 import 'package:chatty_app/product/common/animated_texts.dart';
 import 'package:chatty_app/product/common/bottom_widget.dart';
+import 'package:chatty_app/product/common/show_dialog.dart';
+import 'package:chatty_app/services/firebase_exceptions.dart';
+import 'package:chatty_app/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class LogInPage extends StatefulWidget {
@@ -13,10 +14,27 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
-  final String email = '';
-  final String password = '';
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final auth = FirebaseAuthProvider();
+  String email = '';
+  String password = '';
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  final String _errorMessage = 'Something Bad Happened :/';
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +62,37 @@ class _LogInPageState extends State<LogInPage> {
               ),
             ),
             BottomWidget(
-              emailChanged: (email) =>null,
-              passwordChanged: (password) => null,
+              emailChanged: (email) => this.email = email,
+              passwordChanged: (password) => this.password = password,
               heroTag: 'login',
-              onPressed: () => (_emailController.text == 'admin' &&
-                      _passwordController.text == 'admin')
-                  ? Navigator.pushNamed(context, '/chat')
-                  : log('Wrong email or password'),
+              onPressed: () async {
+                try {
+                  //* We are using FireBaseAuth to create user.
+                  //* And here we are waiting for the Future.
+                  auth.logIn(
+                    email: email,
+                    password: password,
+                  );
+                } on UserNotFoundAuthException {
+                  await fireShowDialog(
+                    title: 'User Not Found',
+                    context,
+                    content: 'Check Your Email and Password',
+                  );
+                } on WrongPasswordAuthException {
+                  await fireShowDialog(
+                    title: 'Wrong Password',
+                    context,
+                    content: 'Check Your Email or Password',
+                  );
+                } on GenericAuthException {
+                  await fireShowDialog(
+                    title: 'Error',
+                    context,
+                    content: _errorMessage,
+                  );
+                }
+              },
               buttonText: Constants.logInText,
               emailController: _emailController,
               passwordController: _passwordController,

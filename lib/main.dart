@@ -2,13 +2,13 @@ import 'package:chatty_app/pages/chat_page.dart';
 import 'package:chatty_app/pages/log_in_page.dart';
 import 'package:chatty_app/pages/register_page.dart';
 import 'package:chatty_app/pages/welcome_page.dart';
+import 'package:chatty_app/services/firebase_service.dart';
 import 'package:chatty_app/theme/theme.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  FirebaseAuthProvider().initializeApp();
   runApp(
     const MainPage(),
   );
