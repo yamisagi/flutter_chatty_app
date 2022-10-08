@@ -1,4 +1,5 @@
 import 'package:chatty_app/services/firebase_exceptions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseAuthException;
 import 'package:firebase_core/firebase_core.dart';
@@ -93,5 +94,16 @@ class FirebaseAuthProvider implements AuthProvider {
   @override
   Future<void> initializeApp() async {
     await Firebase.initializeApp();
+  }
+
+  @override
+  Future<DocumentReference<Map<String, dynamic>>> add(
+      Map<String, dynamic> data) async {
+    return FirebaseFirestore.instance.collection('messages').add(data);
+  }
+
+  @override
+  Future<QuerySnapshot<Object?>> getMessages([GetOptions? options]) {
+    return FirebaseFirestore.instance.collection('messages').get(options);
   }
 }

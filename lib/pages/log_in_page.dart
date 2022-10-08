@@ -69,6 +69,12 @@ class _LogInPageState extends State<LogInPage> {
             heroTag: 'login',
             onPressed: () async {
               try {
+                showDialog(
+                  context: context,
+                  builder: ((context) => const Center(
+                        child: CircularProgressIndicator(),
+                      )),
+                );
                 await auth.logIn(
                   email: email,
                   password: password,

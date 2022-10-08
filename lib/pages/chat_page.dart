@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:chatty_app/constant/constants.dart';
+import 'package:chatty_app/services/auth_user.dart';
+import 'package:chatty_app/services/firebase_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
@@ -13,8 +16,18 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final _auth = FirebaseAuth.instance;
-  User? loggedInUser;
+  late final _textController;
+  final _auth = FirebaseAuthProvider();
+
+  AuthUser? loggedInUser;
+
+  void getMessages() async {
+    final messages = await _auth.getMessages();
+    for (var message in messages.docs) {
+      log(message.data().toString());
+    }
+  }
+
   void checkUser() {
     try {
       final user = _auth.currentUser;
@@ -27,16 +40,33 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _textController = TextEditingController();
+    checkUser();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _textController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: const SizedBox(),
         actions: [
           IconButton(
-            onPressed: () {
-              //TODO: Add logout function
-              // Fake logout for testing
-              Navigator.pop(context);
+            onPressed: () async {
+              try {
+                getMessages();
+                // await _auth.logOut();
+                // Navigator.of(context).pop();
+              } on Exception catch (e) {
+                log(e.toString());
+              }
             },
             icon: const Icon(Icons.exit_to_app),
           )
@@ -54,9 +84,10 @@ class _ChatPageState extends State<ChatPage> {
             ),
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: _textController,
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: Constants.typeMessage,
                       contentPadding: Constants.buttonPadding,
@@ -68,7 +99,13 @@ class _ChatPageState extends State<ChatPage> {
                   child: IconButton(
                     icon: const Icon(Icons.send),
                     padding: Constants.buttonPadding,
-                    onPressed: () {},
+                    onPressed: () async {
+                      _auth.add({
+                        'text': _textController.text,
+                        'sender': loggedInUser!.userEmail,
+                      });
+                      _textController.clear();
+                    },
                   ),
                 )
               ],
