@@ -51,7 +51,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<!-- <img src="https://github.com/yamisagi/*CHANGE_HERE*/blob/main/lib/constants/ss.png" width="350" height="650"> -->
+
+
+https://user-images.githubusercontent.com/84624853/194730224-6fed403e-b11a-48d8-b288-c13e1e875017.mp4
+
+
 
 
 In this project, I am trying to create a Flutter Chatty App, users can Sign-Up and Log-In to chat. And i will use FireBase for service.
