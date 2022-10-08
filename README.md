@@ -60,14 +60,13 @@ In this project, I am trying to create a Flutter Chatty App, users can Sign-Up a
 ## Roadmap
 
 * [x] Project Setup
-* [ ] Implement Firebase
-* [ ] Use Firebase authentication to register and sign in users.
-* [ ] Use Hero animations to create a cool transition between screens.
-* [ ] Use Animations.
-* [ ] Use Mixin.
-* [ ] Use Streams for catchin messages.
-* [ ] Use ListViews to build scrolling views.
-* [ ] Use Firebase Cloud Firestore to store and retrieve data.
+* [x] Implement Firebase
+* [x] Use Firebase authentication to register and sign in users.
+* [x] Use Hero animations to create a cool transition between screens.
+* [x] Use Animations.
+* [x] Use Streams for catching messages.
+* [x] Use ListViews to build scrolling views.
+* [x] Use Firebase Cloud Firestore to store and retrieve data.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>

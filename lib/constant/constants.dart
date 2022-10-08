@@ -1,3 +1,4 @@
+import 'package:chatty_app/constant/colors.dart';
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -23,6 +24,11 @@ class Constants {
     horizontal: 20,
     vertical: 5,
   );
+  static const bubblePadding = EdgeInsets.symmetric(
+    vertical: 10,
+    horizontal: 20,
+  );
+
   static const Radius radius = Radius.circular(20);
   static const BorderRadius registerRadius = BorderRadius.only(
     topLeft: Radius.circular(60),
@@ -34,20 +40,34 @@ class Constants {
       EdgeInsets.symmetric(horizontal: 30);
   static const BorderRadius textFieldRadius =
       BorderRadius.all(Radius.circular(12));
-
-  // ---------------COLORS----------------
-
-  static const Color scaffoldColor = Colors.white;
-  static final Color bottomColor = Colors.deepPurple.shade300;
-  static final Color registerContainerColor = Colors.deepPurple.shade300;
-  static const Color registerBottomColor = Colors.white;
-  static const Color textFieldBackground = Colors.black38;
-  static final Color buttonColor = Colors.deepPurple.shade600;
+  static const chatBubbleRadius = EdgeInsets.symmetric(
+    horizontal: 10,
+    vertical: 20,
+  );
+  static const myChatBubbleRadius = BorderRadius.only(
+    topLeft: Radius.circular(30),
+    bottomLeft: Radius.circular(30),
+    bottomRight: Radius.circular(30),
+  );
+  static const otherChatBubbleRadius = BorderRadius.only(
+    topRight: Radius.circular(30),
+    bottomLeft: Radius.circular(30),
+    bottomRight: Radius.circular(30),
+  );
 
   // -----------------STYLES----------------
 
   static const TextStyle coloredTextStyle = TextStyle(
     fontSize: 70.0,
     fontWeight: FontWeight.bold,
+  );
+  static const stamps = TextStyle(
+    fontSize: 12,
+    color: ProductColors.regularWhite,
+  );
+  static final buttonStyle = ElevatedButton.styleFrom(
+    backgroundColor: ProductColors.buttonColor,
+    padding: Constants.buttonPadding,
+    side: const BorderSide(color: Colors.white),
   );
 }

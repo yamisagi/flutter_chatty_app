@@ -1,4 +1,4 @@
-import 'package:chatty_app/constant/constants.dart';
+import 'package:chatty_app/constant/colors.dart';
 import 'package:chatty_app/product/welcome_page/welcome_bottom.dart';
 import 'package:chatty_app/product/welcome_page/welcome_top.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +30,6 @@ class _WelcomePageState extends State<WelcomePage>
       curve: Curves.easeIn,
     );
     _controller.forward();
-    // _animation.addStatusListener((status) {
-    //   // When the animation is completed, we can reverse it
-    //   status == AnimationStatus.completed ? _controller.reverse() : null;
-    //   status == AnimationStatus.dismissed ? _controller.forward() : null;
-    // });
 
     _controller.addListener(() {
       setState(() {});
@@ -51,7 +46,7 @@ class _WelcomePageState extends State<WelcomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants.scaffoldColor.withOpacity(
+      backgroundColor: ProductColors.scaffoldColor.withOpacity(
         _animation.value,
       ), // 300 is the upperBound so we should divide it by 300 to get 1.0 .
       body: SizedBox(

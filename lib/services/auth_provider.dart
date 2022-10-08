@@ -16,9 +16,8 @@ abstract class AuthProvider {
     required String password,
   });
   Future<void> logOut();
-  Future<void> sendEmailVerification();
   Future<void> initializeApp();
   Future<DocumentReference<Map<String, dynamic>>> add(
       Map<String, dynamic> data);
-  Future<QuerySnapshot<Object?>> getMessages([GetOptions? options]);
+  Stream<QuerySnapshot<Object?>> snapshots({bool includeMetadataChanges = false});
 }

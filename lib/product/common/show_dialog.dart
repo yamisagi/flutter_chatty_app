@@ -1,4 +1,4 @@
-import 'package:chatty_app/constant/constants.dart';
+import 'package:chatty_app/constant/colors.dart';
 import 'package:flutter/material.dart';
 
 Future<dynamic> fireShowDialog(BuildContext context,
@@ -15,7 +15,7 @@ Future<dynamic> fireShowDialog(BuildContext context,
         style: TextStyle(
           fontSize: 25,
           fontWeight: FontWeight.bold,
-          color: Constants.buttonColor,
+          color: ProductColors.buttonColor,
         ),
       )),
       content: Text(
@@ -29,7 +29,7 @@ Future<dynamic> fireShowDialog(BuildContext context,
       actions: [
         TextButton(
           style: TextButton.styleFrom(
-            foregroundColor: Constants.buttonColor,
+            foregroundColor: ProductColors.buttonColor,
             backgroundColor: Colors.transparent,
             enableFeedback: false,
           ),

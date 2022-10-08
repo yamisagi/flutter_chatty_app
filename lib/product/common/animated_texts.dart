@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:chatty_app/constant/colors.dart';
 import 'package:chatty_app/constant/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +17,14 @@ class AnimatedTextWidget extends StatelessWidget {
           Constants.welcomeText,
           speed: const Duration(milliseconds: 200),
           textStyle: Theme.of(context).textTheme.headline3?.copyWith(
-              color: Constants.registerBottomColor,
+              color: ProductColors.registerBottomColor,
               fontWeight: FontWeight.bold),
         ),
         WavyAnimatedText(
           Constants.registerMessage,
           speed: const Duration(milliseconds: 200),
           textStyle: Theme.of(context).textTheme.headline4?.copyWith(
-                color: Constants.registerBottomColor,
+                color: ProductColors.registerBottomColor,
                 fontWeight: FontWeight.bold,
               ),
         ),

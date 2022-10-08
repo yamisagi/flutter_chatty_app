@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:chatty_app/constant/colors.dart';
 import 'package:chatty_app/constant/constants.dart';
 import 'package:chatty_app/product/common/animated_texts.dart';
 import 'package:chatty_app/product/common/bottom_widget.dart';
@@ -41,14 +42,14 @@ class _LogInPageState extends State<LogInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Constants.registerContainerColor,
+        backgroundColor: ProductColors.registerContainerColor,
       ),
-      backgroundColor: Constants.scaffoldColor,
+      backgroundColor: ProductColors.scaffoldColor,
       body: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Constants.registerContainerColor,
+              color: ProductColors.registerContainerColor,
             ),
           ),
           Positioned(

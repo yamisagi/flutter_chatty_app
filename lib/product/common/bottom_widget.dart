@@ -1,4 +1,5 @@
 
+import 'package:chatty_app/constant/colors.dart';
 import 'package:chatty_app/constant/constants.dart';
 import 'package:chatty_app/product/common/textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class BottomWidget extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.4,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Constants.registerBottomColor.withOpacity(0.8),
+          color: ProductColors.registerBottomColor.withOpacity(0.8),
           borderRadius: Constants.registerRadius,
         ),
         child: Column(
@@ -54,7 +55,7 @@ class BottomWidget extends StatelessWidget {
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: Constants.registerBottomColor.withOpacity(0.4),
+                backgroundColor: ProductColors.registerBottomColor.withOpacity(0.4),
                 padding: Constants.buttonPadding,
               ),
               child: Hero(
@@ -63,7 +64,7 @@ class BottomWidget extends StatelessWidget {
                 child: Text(
                   buttonText,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Constants.registerContainerColor,
+                      color: ProductColors.registerContainerColor,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -78,7 +79,7 @@ class BottomWidget extends StatelessWidget {
               child: Text(
                 Constants.forgotPassword,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Constants.registerContainerColor,
+                      color: ProductColors.registerContainerColor,
                       fontWeight: FontWeight.w700,
                     ),
               ),

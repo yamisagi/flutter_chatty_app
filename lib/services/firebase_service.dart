@@ -83,15 +83,6 @@ class FirebaseAuthProvider implements AuthProvider {
   }
 
   @override
-  Future<void> sendEmailVerification() async {
-    final user = FirebaseAuth.instance.currentUser;
-
-    user != null
-        ? await user.sendEmailVerification()
-        : throw UserNotLoggedInAuthException();
-  }
-
-  @override
   Future<void> initializeApp() async {
     await Firebase.initializeApp();
   }
@@ -103,7 +94,11 @@ class FirebaseAuthProvider implements AuthProvider {
   }
 
   @override
-  Future<QuerySnapshot<Object?>> getMessages([GetOptions? options]) {
-    return FirebaseFirestore.instance.collection('messages').get(options);
+  Stream<QuerySnapshot<Object?>> snapshots(
+      {bool includeMetadataChanges = false}) {
+    return FirebaseFirestore.instance
+        .collection('messages')
+        .orderBy('timestamp')
+        .snapshots();
   }
 }

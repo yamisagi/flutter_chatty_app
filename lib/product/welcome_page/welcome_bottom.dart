@@ -1,3 +1,4 @@
+import 'package:chatty_app/constant/colors.dart';
 import 'package:chatty_app/constant/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class WelcomeBottomWidget extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.4,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Constants.bottomColor,
+          color: ProductColors.bottomColor,
           borderRadius: const BorderRadius.only(
             topLeft: Constants.radius,
             topRight: Constants.radius,
@@ -37,11 +38,7 @@ class WelcomeBottomWidget extends StatelessWidget {
                   ),
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Constants.buttonColor,
-                padding: Constants.buttonPadding,
-                side: const BorderSide(color: Colors.white),
-              ),
+              style: Constants.buttonStyle,
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   '/register',
@@ -56,11 +53,7 @@ class WelcomeBottomWidget extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Constants.buttonColor,
-                padding: Constants.buttonPadding,
-                side: const BorderSide(color: Colors.white),
-              ),
+              style: Constants.buttonStyle,
               onPressed: () {
                 Navigator.of(context).pushNamed('/login');
               },
@@ -69,7 +62,7 @@ class WelcomeBottomWidget extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headline6
-                    ?.copyWith(color: Colors.white),
+                    ?.copyWith(color: ProductColors.regularWhite),
               ),
             ),
           ],

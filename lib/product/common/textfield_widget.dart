@@ -1,3 +1,4 @@
+import 'package:chatty_app/constant/colors.dart';
 import 'package:chatty_app/constant/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class TextFieldWidget extends StatelessWidget {
     return Container(
       margin: Constants.textFieldPadding,
       decoration: const BoxDecoration(
-        color: Constants.textFieldBackground,
+        color: ProductColors.textFieldBackground,
         borderRadius: Constants.textFieldRadius,
       ),
       child: TextField(
@@ -31,7 +32,7 @@ class TextFieldWidget extends StatelessWidget {
         obscureText: isPassword,
         decoration: InputDecoration(
           labelStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Constants.scaffoldColor,
+                color: ProductColors.scaffoldColor,
                 fontWeight: FontWeight.bold,
               ),
           label: Text(
@@ -43,7 +44,7 @@ class TextFieldWidget extends StatelessWidget {
           floatingLabelAlignment: FloatingLabelAlignment.start,
           prefixIcon: Icon(
             isPassword ? Icons.password : Icons.email,
-            color: Constants.registerBottomColor,
+            color: ProductColors.registerBottomColor,
           ),
           border: InputBorder.none,
         ),
