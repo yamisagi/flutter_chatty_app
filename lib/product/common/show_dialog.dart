@@ -1,3 +1,4 @@
+import 'package:chatty_app/constant/constants.dart';
 import 'package:flutter/material.dart';
 
 Future<dynamic> fireShowDialog(BuildContext context,
@@ -5,12 +6,40 @@ Future<dynamic> fireShowDialog(BuildContext context,
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text(title),
-      content: Text(content),
+      elevation: 0,
+      // IDK it would be better color for this :/
+      backgroundColor: Colors.black54, // Colors.white.withOpacity(0.9),
+      title: Center(
+          child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+          color: Constants.buttonColor,
+        ),
+      )),
+      content: Text(
+        content,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       actions: [
         TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Constants.buttonColor,
+            backgroundColor: Colors.transparent,
+            enableFeedback: false,
+          ),
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Ok'),
+          child: const Center(
+            child: Text(
+              'Ok',
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+            ),
+          ),
         ),
       ],
     ),
